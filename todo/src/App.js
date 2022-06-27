@@ -7,27 +7,20 @@ import './App.css';
 
 
 function App() {
-  const [Items, setItems] = useState()
-  const [Priority, setPriority] = useState()
+  const [Items, setItems] = useState('')
+  const [Priority, setPriority] = useState('')
   const [NewList, setNewList] = useState([])
   function onClickPush(e) {
     const currentToDO = {
       todo: Items,
-      ugent: Priority
+      urgent: Priority
     }
-    console.log('current todo that will be added', currentToDO)
-    console.log('new list', NewList)
-    console.log('items', Items)
     const newToDo = [...NewList, currentToDO]
-    console.log('list of todos', newToDo)
-
-    NewList.push(Items)
 
 
-
-
-
-
+    setNewList(newToDo)
+    setItems('')
+    setPriority('')
 
   }
 
@@ -40,7 +33,7 @@ function App() {
             {NewList.map((Items) => {
 
               return (
-                <li>{Items} </li>
+                <li>{Items.todo} {Items.urgent} </li>
               )
             })}
           </ol>
